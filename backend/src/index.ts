@@ -1,6 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
+import cors from 'cors'
 // Rotas
 import userRoute from './routes/userRoute'
 import companyRoute from './routes/companyRoute'
@@ -13,6 +14,7 @@ const DB = process.env.DATABASE.replace("<password>", process.env.DATABASE_PASSW
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 
 mongoose.connect(DB, {

@@ -9,7 +9,7 @@ const Cadastro = () => {
     const [description, setDescription] = useState('')
     const [image, setImage] = useState('')
     const [model, setModel] = useState('')
-    const [healthScore, setHealthScore] = useState(100)
+    const [healthScore, setHealthScore] = useState('')
     const [status, setStatus] = useState("Disponível")
 
     const handleSubmit = (event:FormEvent) => {
@@ -18,8 +18,9 @@ const Cadastro = () => {
     }
 
     const handleNumber = (event:ChangeEvent<HTMLInputElement>) => {
-        parseInt(event.target.value)
-        setHealthScore(event.target.value)
+        const number = event.target.value
+
+        setHealthScore(number)
     }
 
     return (
@@ -46,7 +47,7 @@ const Cadastro = () => {
                 </div>
                 <div className="input-block">
                     <label htmlFor="healthscore">Instruções</label>
-                    <input type="number" id="healthscore" value={healthScore} onChange={handleNumber}/>
+                    <input id="healthscore" value={healthScore} onChange={handleNumber}/>
                 </div>
                 <div className="button-select">
                     <button type="button" 
