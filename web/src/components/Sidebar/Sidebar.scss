@@ -11,12 +11,21 @@
   
     display: flex;
     flex-direction: column;
-    // justify-content: space-between;
     align-items: center;
 
     h3 {
         color: #FFF;
         margin: 15px 0px;
+    }
+
+    .links {
+
+        margin-top: 15px;
+
+        a {
+            text-decoration: none;
+            color: #FFF;    
+        }
     }
 
     .info_group {
@@ -29,19 +38,23 @@
         h5 {
             color:#70717B;
             letter-spacing: 1px;
+
+            &:last-child {
+                margin-top: 30px;
+            }
         }
     
 
     }
-    
-    .greyline {
-        width: 100%;
-        height: 2px;
-        background-color: #70717b;
-        margin-bottom: 20px;
-    }
 
+    
 }
-  
-  
+
+
+.greyline {
+    width: 100%;
+    height: 2px;
+    background-color: #70717b;
+    margin-bottom: 20px;
+}
   

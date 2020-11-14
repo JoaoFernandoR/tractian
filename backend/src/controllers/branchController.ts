@@ -66,3 +66,27 @@ export const createBranch = async (request:Request, response:Response, next:Next
 
     }    
 }
+
+export const getSingleBranch = async (request:Request, response:Response, next:NextFunction) => {
+    try {
+        const { branchid } = request.params
+
+        console.log(branchid)
+
+        const result = await Branch.findById(branchid).populate("equipments")
+
+        response.status(200).json({
+            status: 'success',
+            data: result
+        })
+
+    } catch(err) {
+
+        response.status(400).json({
+           status: 'Failure',
+           message: err.message,
+           code : err.code
+        })
+
+    }    
+}

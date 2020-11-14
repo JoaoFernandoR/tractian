@@ -13,7 +13,7 @@ interface Props {
 
 interface IBranches {
   name: string,
-  id: string // Do Branch
+  _id: string // Do Branch
 }
 
 const Sidebar = (props:Props) => {
@@ -22,7 +22,9 @@ const Sidebar = (props:Props) => {
     return (
       props.api.branches.map((item, index) => {
         return (
-          <Link to="/unidade" key={index}> {item.name} </Link>
+          <div className="links" key={index}>
+            <Link to={`/unidade/${item._id}`}> {item.name} </Link>
+          </div>
         )
       })
     )

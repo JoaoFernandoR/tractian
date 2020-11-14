@@ -1,5 +1,5 @@
 import express from 'express'
-import { createBranch, getAllBranches } from '../controllers/branchController'
+import { createBranch, getAllBranches, getSingleBranch } from '../controllers/branchController'
 
 const route = express.Router()
 
@@ -7,5 +7,7 @@ const route = express.Router()
 route.route('/create/:id').post(createBranch)
 
 route.route('/:id').get(getAllBranches)
+
+route.route('/branches/:branchid').get(getSingleBranch)
 
 export default route

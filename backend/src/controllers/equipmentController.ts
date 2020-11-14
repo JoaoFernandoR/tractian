@@ -60,3 +60,25 @@ export const createEquipment = async (request:Request, response:Response, next:N
 
     }    
 }
+
+export const getEquipment = async (request:Request, response:Response, next:NextFunction) => {
+    try {
+
+        const { branchid } = request.params
+        const Equipments = await Equipment.find({branch_id : branchid})
+
+        response.status(200).json({
+            status: 'success',
+            data: Equipments
+        })
+
+    } catch(err) {
+
+        response.status(400).json({
+           status: 'Failure',
+           message: err.message,
+           code : err.code
+        })
+
+    }    
+}

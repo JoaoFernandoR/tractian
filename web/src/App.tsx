@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 import api from './services/api'
-
 // pages
 import Home from './pages/Home'
 import Cadastro from './pages/Cadastro'
 import Unidade from './pages/Unidade';
 import Sidebar from './components/Sidebar';
+import Loading from './pages/Loading/'
 
 interface ApiResponse {
   data: {
@@ -27,7 +27,7 @@ const App = () => {
     }, [])
 
     if (apiData === undefined) {
-      return <h1> Carregando</h1>
+      return <Loading />
   }
   else {
     return (
@@ -36,7 +36,7 @@ const App = () => {
       <Switch>
         <Route path='/' component={Home} exact={true}/>
         <Route path='/cadastro' component={Cadastro} exact={true}/>
-        <Route path='/unidade' component={Unidade} exact={true}/>
+        <Route path='/unidade/:branchid' component={Unidade} exact={true}/>
         <Redirect to="/" />
       </Switch>    
     </BrowserRouter>
