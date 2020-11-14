@@ -1,17 +1,44 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 
 import './Sidebar.scss'
 
-const Sidebar = () => {
+interface Props {
+  api : {
+    branches : IBranches[],
+    name: string,
+    id: string // Da empresa
+  }
+}
+
+interface IBranches {
+  name: string,
+  id: string // Do Branch
+}
+
+const Sidebar = (props:Props) => {
+
+  const handleUnits = () => {
+    return (
+      props.api.branches.map((item, index) => {
+        return (
+          <Link to="/unidade" key={index}> {item.name} </Link>
+        )
+      })
+    )
+  }
 
   return (
   <section id="sidebar">
+    {console.log(props.api, 'props.branches')}
     <div className="info_group">
-      <h5> Company </h5>
-      <h3> Freios Supremos </h3>
+      <h5> Empresa </h5>
+      <h3> {props.api.name} </h3>
       <div className="greyline"></div>
+      <h5> Unidades </h5>
     </div>
+    {handleUnits()}
+    <div className="greyline"></div>
   </section>
   )
   

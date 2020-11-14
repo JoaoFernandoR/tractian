@@ -1,25 +1,14 @@
 import React, {useState, useEffect} from 'react'
-import Sidebar from '../../components/Sidebar'
 import { BsCircleFill } from 'react-icons/bs'
 
-
 import data from '../../MockData/data.json'
-import api from '../../services/api'
 import './Home.scss'
 
 const Home = () => {
 
     const [status, setStatus] = useState('Em manutenção')
-    const [apiData, setApiData] = useState({})
-
-    useEffect(() => {
-        api.get('/api/v1/branches/5fb02132436e23b4cdbbb37e')
-        .then(result => console.log(result.data.data))
-        .catch(err => console.log(err))
-    }, [])
-
+    
     const handlehealthScore = (healthScore: number) => {
-        console.log(healthScore)
         if (healthScore >= 80)
             return <span style={{'color' : 'green'}}> {healthScore}</span>
 
@@ -71,10 +60,9 @@ const Home = () => {
             })
         )
     }
-
+    
     return (
     <section id="home">
-        <Sidebar />
         <div className="container"> 
             <div className="maintitle">
                 <h1> Unidade 1</h1>
