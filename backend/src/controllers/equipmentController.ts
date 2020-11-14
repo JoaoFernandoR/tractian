@@ -1,4 +1,5 @@
 import {Request, Response, NextFunction} from 'express'
+import Branch from '../models/branchModel'
 import Equipment from '../models/equipmentModel'
 
 
@@ -26,18 +27,27 @@ export const getAllEquipments = async (request:Request, response:Response, next:
 export const createEquipment = async (request:Request, response:Response, next:NextFunction) => {
     try {
         const {name, image, model, description, status, healthscore} = request.body
+        const { id } = request.params
 
-        const newUser = await Equipment.create({
+        const newEquipment = await Equipment.create({
             name,
             image,
             model,
             description,
-            status, healthscore
+            status, 
+            healthscore,
+            branch_id : id
         })
+
+        const BranchById = await Branch.findById(id) as any
+
+        BranchById.equipments.push(newEquipment)
+
+        await BranchById?.save()
 
         response.status(200).json({
             status: 'success',
-            data: newUser
+            data: newEquipment
         })
 
     } catch(err) {

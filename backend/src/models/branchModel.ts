@@ -24,7 +24,14 @@ const branchSchema = new mongoose.Schema({
         required: [true, "A branch must have a location"],
         trim : true
     },
-    equipments : []
+    company_id : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Companies'
+    },
+    equipments : [ {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Equipments"
+    }]
 }, { timestamps : true})
 
 const Branch = mongoose.model('Branches', branchSchema)

@@ -34,7 +34,11 @@ const equipmentSchema = new mongoose.Schema({
     healthscore: {
         type: Number,
         required: [true, 'Please inform the equipment healthscore']
-    }
+    },
+    branch_id : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Branches'
+    },
 }, { timestamps : true})
 
 const Equipment = mongoose.model('Equipments', equipmentSchema)

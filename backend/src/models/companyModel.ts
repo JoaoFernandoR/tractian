@@ -13,6 +13,7 @@ const companySchema = new mongoose.Schema({
     cnpj: {
         type: String,
         required: [true, 'A company must have a CNPJ'],
+        unique: [true, 'This CNPJ already exists'],
         validate: {
             validator : function(val: string) {
             return cnpj.isValid(val)
@@ -20,7 +21,10 @@ const companySchema = new mongoose.Schema({
         message : "Must be a valid CNPJ"
         }
     },
-    unitys : []
+    branches : [ {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Branches"
+    }]
 }, { timestamps : true})
 
 const Company = mongoose.model('Companies', companySchema)

@@ -4,6 +4,8 @@ import mongoose from 'mongoose'
 // Rotas
 import userRoute from './routes/userRoute'
 import companyRoute from './routes/companyRoute'
+import branchesRoute from './routes/branchesRoute'
+import equipmentsRoute from './routes/equipmentsRoute'
 
 dotenv.config({path : './config.env'})
 
@@ -23,6 +25,8 @@ mongoose.connect(DB, {
 // Rotas
 app.use('/api/v1/users', userRoute)
 app.use('/api/v1/companies', companyRoute)
+app.use('/api/v1/branches', branchesRoute)
+app.use('/api/v1/equipments', equipmentsRoute)
 
 const PORT = process.env.PORT || 3333
 

@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getAllCompanies, createACompany } from '../controllers/companycontroller'
+import { getAllCompanies, createACompany, getSingleCompany } from '../controllers/companycontroller'
 
 const route = express.Router()
 
@@ -10,6 +10,8 @@ const route = express.Router()
 route.route('/')
 .get(getAllCompanies)
 .post(createACompany)
+
+route.route('/:id').get(getSingleCompany)
 
 
 export default route
