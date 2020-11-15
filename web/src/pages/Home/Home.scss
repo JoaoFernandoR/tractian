@@ -1,5 +1,5 @@
 #home {
-    background-image: linear-gradient(to right, rgb(250, 228, 228), rgb(196, 196, 168));
+    background-image: linear-gradient(to right, rgb(250, 228, 228), #c4c4a8);
     min-height: 100vh;
     
     .container {
@@ -8,5 +8,15 @@
         padding-left: 310px;
         padding-top: 6rem;
         min-height: 100vh;
+    }
+
+    .highcharts-data-table {
+        font-family: Verdana, sans-serif;
+        border-collapse: collapse;
+        border: 1px solid #EBEBEB;
+        margin: 10px auto;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
     }
 }

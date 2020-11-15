@@ -25,7 +25,6 @@ const Cadastro = () => {
 
     return (
     <section id="create-branch">
-        <Sidebar />
         <form onSubmit={handleSubmit}>
             <fieldset>
                 <legend> Dados </legend>
