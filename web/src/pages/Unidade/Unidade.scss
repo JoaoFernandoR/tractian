@@ -29,6 +29,8 @@
         }
 
         .equipments_container {
+            padding: 3rem;
+
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
@@ -106,6 +108,7 @@
     
                     span {
                         font-size: 1.2rem;
+                        margin-left: 5px;
                     }
                 }
         

@@ -1,4 +1,13 @@
 #create-branch {
+    background-image: linear-gradient(to right, rgb(250, 228, 228), rgb(196, 196, 168));
+    min-height: 100vh;
+  
+  .container {
+      width: 100%;
+      max-width: 1600px;
+      padding-left: 310px;
+      padding-top: 6rem;
+      min-height: 100vh;
 
 	form {
 		width: 700px;
@@ -93,6 +102,7 @@
             }
           }
         }
+      }
 	}
 
 }

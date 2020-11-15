@@ -1,5 +1,4 @@
 import React, {FormEvent, useState, ChangeEvent} from 'react'
-import Sidebar from '../../components/Sidebar'
 
 import './Cadastro.scss'
 
@@ -25,48 +24,50 @@ const Cadastro = () => {
 
     return (
     <section id="create-branch">
-        <form onSubmit={handleSubmit}>
-            <fieldset>
-                <legend> Dados </legend>
-                <div className="input-block">
-                    <label htmlFor="name">Nome</label>
-                    <input id="name" value={name} onChange={event => setName(event.target.value)}/>
-                </div>
-                <div className="input-block">
-                    <label htmlFor="model">Modelo</label>
-                    <input id="model" value={model} onChange={event => setModel(event.target.value)}/>
-                </div>
-                <div className="input-block">
-                    <label htmlFor="description">Sobre <span>Máximo de 100 caracteres</span></label>
-                    <textarea id="description" maxLength={100} value={description} onChange={event => setDescription(event.target.value)}/>
-                </div>
-                <div className="input-block">
-                    <label htmlFor="image">Foto</label>
-                    <input type="file" id="image" onChange={event => event.target.files}/>
-                </div>
-                <div className="input-block">
-                    <label htmlFor="healthscore">Instruções</label>
-                    <input id="healthscore" value={healthScore} onChange={handleNumber}/>
-                </div>
-                <div className="button-select">
-                    <button type="button" 
-                    onClick={() => setStatus("Disponível")}>
-                        Disponível
+        <div className="container">
+            <form onSubmit={handleSubmit}>
+                <fieldset>
+                    <legend> Dados </legend>
+                    <div className="input-block">
+                        <label htmlFor="name">Nome</label>
+                        <input id="name" value={name} onChange={event => setName(event.target.value)}/>
+                    </div>
+                    <div className="input-block">
+                        <label htmlFor="model">Modelo</label>
+                        <input id="model" value={model} onChange={event => setModel(event.target.value)}/>
+                    </div>
+                    <div className="input-block">
+                        <label htmlFor="description">Sobre <span>Máximo de 100 caracteres</span></label>
+                        <textarea id="description" maxLength={100} value={description} onChange={event => setDescription(event.target.value)}/>
+                    </div>
+                    <div className="input-block">
+                        <label htmlFor="image">Foto</label>
+                        <input type="file" id="image" onChange={event => event.target.files}/>
+                    </div>
+                    <div className="input-block">
+                        <label htmlFor="healthscore">Instruções</label>
+                        <input id="healthscore" value={healthScore} onChange={handleNumber}/>
+                    </div>
+                    <div className="button-select">
+                        <button type="button" 
+                        onClick={() => setStatus("Disponível")}>
+                            Disponível
+                        </button>
+                        <button type="button" 
+                        onClick={() => setStatus("Em manutenção")}>
+                            Em manutenção
+                        </button>
+                        <button type="button" 
+                        onClick={() => setStatus("Desativado")}>
+                            Desativado
+                        </button>
+                    </div>
+                    <button className="confirm-button" type="submit">
+                        Confirmar
                     </button>
-                    <button type="button" 
-                    onClick={() => setStatus("Em manutenção")}>
-                        Em manutenção
-                    </button>
-                    <button type="button" 
-                    onClick={() => setStatus("Desativado")}>
-                        Desativado
-                    </button>
-                </div>
-                <button className="confirm-button" type="submit">
-                    Confirmar
-                </button>
-            </fieldset>
-        </form>
+                </fieldset>
+            </form>
+        </div>
     </section>
     )
 }

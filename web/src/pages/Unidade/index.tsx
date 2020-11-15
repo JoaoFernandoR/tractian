@@ -54,7 +54,6 @@ const Unidade = (props: HighchartsReact.Props) => {
     
     const [data, setData] = useState<IBranch>()
     const [optionsData, setOptionsData] = useState<IOptions[]>(InitialData)
-   
 
     const options = {
         title: {
@@ -76,7 +75,7 @@ const Unidade = (props: HighchartsReact.Props) => {
                 cursor: 'pointer',
                 dataLabels: {
                     enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
                 },
                 borderColor: null
             }
@@ -116,6 +115,7 @@ const Unidade = (props: HighchartsReact.Props) => {
         
     }
         
+    
     useEffect( () => {
         api.get(`/api/v1/branches/branches/${params.branchid}`).then((result) =>{
          setData(result.data.data) 
@@ -128,10 +128,38 @@ const Unidade = (props: HighchartsReact.Props) => {
         if (healthScore >= 80)
             return <span style={{'color' : 'green'}}> {healthScore}</span>
 
-        if (healthScore < 80 || healthScore > 60) return <span style={{'color' : "#FFB658"}}> {healthScore}</span>
+        if (healthScore < 80 && healthScore > 60) return <span style={{'color' : "#FFB658"}}> {healthScore}</span>
     
         if (healthScore <= 60)
             return <span style={{'color' : 'red'}}> {healthScore}</span>    
+    }
+
+    const handleStatus = (status: string) => {
+        if(status === "Disponível") {
+            return (
+            <div className="status">
+                <BsCircleFill color="green"/> 
+                <p>{status}</p>
+            </div>
+            )
+        }
+        if(status === "Em manutenção") {
+            return (
+            <div className="status">
+                <BsCircleFill color="yellow"/> 
+                <p>{status}</p>
+            </div>
+            )
+        }
+        if(status === "Desativado") {
+            return (
+            <div className="status">
+                <BsCircleFill color="red"/> 
+                <p>{status}</p>
+            </div>
+            )
+        }
+
     }
 
     if(!data) return <Loading />
@@ -139,7 +167,6 @@ const Unidade = (props: HighchartsReact.Props) => {
     const handleEquipments = () => {
         return (
             data?.equipments.map(item => {
-                // buildPieData(item.name, item.healthscore)
                 return (
                 <div className="card" key={item._id}>
                     <div className="equipment_image">
@@ -150,12 +177,10 @@ const Unidade = (props: HighchartsReact.Props) => {
                         <h3> {item.model} </h3>
                         <h3> {item.description}</h3>
                         <div className="info_health">
-                            <div className="status">
-                                <BsCircleFill color="red"/> 
-                                <p>{item.status}</p>                          
-                            </div>
+                            {handleStatus(item.status)}
                             <div className="healthscore">
-                                <p>Nível de saúde: {handlehealthScore(item.healthscore)} </p>
+                                <p>Nível de saúde:</p> 
+                                {handlehealthScore(item.healthscore)}
                             </div>
                         </div>
                     </div>

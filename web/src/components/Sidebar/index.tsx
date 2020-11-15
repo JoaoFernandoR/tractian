@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {AiFillHome} from 'react-icons/ai'
 
 import './Sidebar.scss'
 
@@ -22,9 +23,9 @@ const Sidebar = (props:Props) => {
     return (
       props.api.branches.map((item, index) => {
         return (
-          <div className="links" key={index}>
+          <ul key={index} className="links">
             <Link to={`/unidade/${item._id}`}> {item.name} </Link>
-          </div>
+          </ul>
         )
       })
     )
@@ -32,15 +33,22 @@ const Sidebar = (props:Props) => {
 
   return (
   <section id="sidebar">
-    {console.log(props.api, 'props.branches')}
+    <Link to="/" className="home_button">
+      <AiFillHome size={30} />
+    </Link>
     <div className="info_group">
       <h5> Empresa </h5>
-      <h3> {props.api.name} </h3>
       <div className="greyline"></div>
+      <h3> {props.api.name} </h3>
       <h5> Unidades </h5>
     </div>
-    {handleUnits()}
     <div className="greyline"></div>
+    <li>
+      {handleUnits()}
+    </li>
+    <Link to="/cadastro" className="cadastrar">
+      <AiFillHome size={30} />
+    </Link>
   </section>
   )
   
