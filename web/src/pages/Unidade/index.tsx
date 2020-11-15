@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import { BsCircleFill } from 'react-icons/bs'
 import api from '../../services/api'
+import Loading from '../Loading'
 
 import './Unidade.scss'
 
@@ -49,14 +50,14 @@ const Unidade = () => {
             return <span style={{'color' : 'red'}}> {healthScore}</span>    
     }
 
-    if(!data) return <h1>carregando</h1>
+    if(!data) return <Loading />
 
     const handleEquipments = () => {
         return (
-            data.equipments.map(item => {
+            data?.equipments.map(item => {
                 return (
                 <div className="card" key={item._id}>
-                    <div className="sneaker">
+                    <div className="equipment_image">
                         <img src={item.image} alt="Adidas"/>
                     </div>
                     <div className="info">
@@ -80,7 +81,7 @@ const Unidade = () => {
     }
     
     return (
-        <section id="unidade">
+    <section id="unidade">
         <div className="container"> 
             <div className="maintitle">
                 <h1> {data.name}</h1>
