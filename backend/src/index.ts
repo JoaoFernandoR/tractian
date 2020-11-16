@@ -10,8 +10,6 @@ import equipmentsRoute from './routes/equipmentsRoute'
 
 dotenv.config({path : './config.env'})
 
-const DB = process.env.DATABASE
-
 // .replace("<password>", process.env.DATABASE_PASSWORD) now will
 
 const app = express()
@@ -19,7 +17,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect(DB, {
+mongoose.connect(process.env.DATABASE!, {
 	useNewUrlParser : true, 
 	useUnifiedTopology : true, 
     useFindAndModify : false,
