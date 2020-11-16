@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {AiFillHome} from 'react-icons/ai'
+import { FiPlus} from 'react-icons/fi'
+import { AiFillHome } from 'react-icons/ai'
 
 import './Sidebar.scss'
 
@@ -46,9 +47,12 @@ const Sidebar = (props:Props) => {
     <li>
       {handleUnits()}
     </li>
-    <Link to="/cadastro" className="cadastrar">
-      <AiFillHome size={30} />
-    </Link>
+    <div className="cadastrar">
+      <h3> Área do Admin </h3>
+      <Link to="/cadastro">
+        <FiPlus size={30} />
+      </Link>
+    </div>
   </section>
   )
   

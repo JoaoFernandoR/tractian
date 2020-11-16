@@ -1,22 +1,23 @@
 #home {
     background-image: linear-gradient(to right, rgb(250, 228, 228), #c4c4a8);
-    min-height: 100vh;
+    height: 100vh;
     
     .container {
         width: 100%;
         max-width: 1600px;
         padding-left: 310px;
-        padding-top: 6rem;
-        min-height: 100vh;
+        height: 100vh;
+        text-align: center;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 2px;
+            color: rgb(53, 17, 60);
+        }
     }
 
-    .highcharts-data-table {
-        font-family: Verdana, sans-serif;
-        border-collapse: collapse;
-        border: 1px solid #EBEBEB;
-        margin: 10px auto;
-        text-align: center;
-        width: 100%;
-        max-width: 500px;
-    }
 }

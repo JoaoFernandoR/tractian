@@ -71,8 +71,6 @@ export const getSingleBranch = async (request:Request, response:Response, next:N
     try {
         const { branchid } = request.params
 
-        console.log(branchid)
-
         const result = await Branch.findById(branchid).populate("equipments")
 
         response.status(200).json({
