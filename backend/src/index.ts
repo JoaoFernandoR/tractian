@@ -12,7 +12,7 @@ dotenv.config({path : './config.env'})
 
 const DB = process.env.DATABASE
 
-// .replace("<password>", process.env.DATABASE_PASSWORD)
+// .replace("<password>", process.env.DATABASE_PASSWORD) now will
 
 const app = express()
 
