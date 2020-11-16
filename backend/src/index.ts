@@ -30,6 +30,6 @@ app.use('/api/v1/companies', companyRoute)
 app.use('/api/v1/branches', branchesRoute)
 app.use('/api/v1/equipments', equipmentsRoute)
 
-const PORT = process.env.PORT || 3333
+const PORT : string|number = process.env.PORT || 3333;
 
 app.listen(PORT, () => console.log('Conectado na porta 3333...'))
